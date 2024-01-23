@@ -1,15 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Store</title>
-</head>
-<body>
+{% extends "base.html" %} {% block title %}My_store{% endblock title %} 
 
-<h1> hellow world </h1>
+{% block content %}
 
-    
-</body>
-</html>
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="list-group">
+         
+          <a href="/" class="list-group-item">All Products</a>
+          {% for category in categories  %}
+          <a href="?category={{category.id}}" class="list-group-item">{{category.name}}</a>
+          {% endfor %}
+          
+      </div>
+    </div>
+
+    <div id="product" class="col-lg-9">
+      <div class="row mx-auto">
+        {% for product in products %}
+        <div class="card mx-auto mb-3" style="width: 18rem">
+          <img src="{{product.pro_img.url}}" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Prodcut Name:{{product.product_name}}</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="/#" class="btn btn-primary">Add to Cart</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

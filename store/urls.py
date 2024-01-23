@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
+from django.conf.urls.static import static
 from store import views
+from myshop import settings
 
 urlpatterns = [
     path('', views.index,name='index'),
+    path('signup/', views.signup,name='signup'),
     
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
