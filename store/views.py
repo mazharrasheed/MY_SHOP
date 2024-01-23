@@ -7,11 +7,22 @@ from .models import Category, Products
 
 def index(request):
 
-    products=Products.get_all_products()
+    products=None
     categories=Category.get_all_products()
-    # return HttpResponse("hello world")
+
+    categoryID=(request.GET.get('category'))
+
+    if categoryID:
+       products=Products.get_all_products_by_categoryid(categoryID)
+    else:
+         products=Products.get_all_products()
+
+ 
+ 
     data={'products':products,'categories':categories}
     return render(request,"index.html",data)
 
-def show():
-    pass
+def signup(request):
+
+    data={}
+    return render(request,"signup.html",data)
