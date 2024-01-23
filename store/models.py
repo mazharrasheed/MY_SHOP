@@ -9,7 +9,6 @@ class Category(models.Model):
         return self.name
 
 
-
 class Products(models.Model):
     product_name=models.CharField(max_length=50)
     pro_des=models.CharField(max_length=250 ,default="")
