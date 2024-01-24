@@ -10,14 +10,14 @@ from .models.products import Products
 def index(request):
 
     products=None
-    categories=Category.get_all_products()
+    categories=Category.get_all_category()
 
     categoryID=(request.GET.get('category'))
 
     if categoryID:
-       products=Products.get_all_products_by_categoryid(categoryID)
+       products=Products.get_all_produts_by_categoryid(categoryID)
     else:
-         products=Products.get_all_products()
+         products=Products.get_all_produts()
 
     data={'products':products,'categories':categories}
     return render(request,"index.html",data)
@@ -34,12 +34,22 @@ def signup(request):
         email=request.POST.get('email')
         password=request.POST.get('password')
 
-        customer=Customer(firstname=firstname,
-                            lastname=lastname,
-                            phone=phone,
-                            email=email,
-                            password=password                    
-                            )
-        customer.register()
+        error_message=None
+        if (not firstname):
+            error_message="First name requried"
+        elif(len(firstname)<4):
+            error_message="First name should be more then 4 character "
 
-        return HttpResponse(request.POST.get("firstname"))
+        if not error_message:
+            customer=Customer(firstname=firstname,
+                                lastname=lastname,
+                                phone=phone,
+                                email=email,
+                                password=password                    
+                                )
+            customer.register()
+            return redirect("/")
+
+        else:
+
+             return render(request,"signup.html",{'error':error_message})
