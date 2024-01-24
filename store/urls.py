@@ -19,10 +19,11 @@ from django.contrib import admin
 from django.urls import include, path
 
 from myshop import settings
-from store import views
+from store.views import index,signup,Login
 
 urlpatterns = [
-    path('', views.index,name='index'),
-    path('signup', views.signup,name='signup'),
-    
+    path('', index,name='index'),
+    path('signup/', signup,name='signup'),
+    path('login/', Login.as_view(),name='login'),
+     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
