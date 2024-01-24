@@ -1,29 +1,35 @@
 {% extends 'base.html' %}
 
-{% block title %} Sign_Up {% endblock title %}
+{% block title %} SignUP {% endblock title %} 
 
 {% block content %}
-    
+
 <div class="container">
-    <div class="p-4 m-4">
-        <div class="col-lg-5">
+  <div  class="p-4 m-4">
+	<div class="mb-3 col-lg-5 mx-auto border rounded p-4">
+    <h3 class="alert alert-light border rounded">Creat an Account</h3>
+    <form method='POST'>
+    {% csrf_token %}  
+		<label for="fname" class="form-label">First Name</label>
+		<input name="firstname" required="True" type="text" class="form-control" id="fname" placeholder="Enter your first name">
+		<label for="lname" class="form-label">Last Name</label>
+		<input name="lastname" required="True" type="text" class="form-control" id="lname" placeholder="Enter your last name">
+		<label for="phoneid" class="form-label">Phone</label>
+		<input name="Phone" required="True" type="text" class="form-control" id="phoneid" placeholder="+92- - - - -">
+		<label for="inputemail" class="form-label">Email address</label>
+		<input name="email" required="True" type="email" class="form-control" id="inputemail" placeholder="name@example.com">
+    <label for="inputPassword" class="form-label">Password</label>
+    <input name="password" required="True" type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock"placeholder="********" >
+    <div id="passwordHelpBlock" class="form-text">
+          Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+    </div>
+    <div class="form-group">
+      <input name="signup" type="submit" class="btn btn btn-info" id="signup" value="Sign Up">
+    </div>
+  </form>
+ 
+  </div>
+  </div>
+</div>
 
-            <form action="">
-                {% comment %} email {% endcomment %}
-            <div class="mb-3">
-                <label for="" class="form-label">E-mail</label>
-                <input type="text" name="" id="" class="form-control" placeholder="name@example.com" aria-describedby="helpId">
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">Password</label>
-                <input type="password" name="" id="" class="form-control" placeholder="name@example.com" aria-describedby="helpId">
-            </div>
-
-            </form>
-        <div>
-    <div>
-
-<div>
-
-{% endblock  %}
-    
+{% endblock content %}

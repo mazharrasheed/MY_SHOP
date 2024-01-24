@@ -129,6 +129,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-MEDIA_URL='/images/products/download/'
+MEDIA_URL='/images/uploaded/'
 
 MEDIA_ROOT=BASE_DIR
+
+APPEND_SLASH=False
