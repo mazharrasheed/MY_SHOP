@@ -7,8 +7,8 @@ from .models.products import Products
 # Create your views here.
 
 def index(request):
-    
-    prodducts=None
+
+    products=None
     categories=Category.get_all_category()
     categoryID=request.GET.get('category')
     
@@ -22,5 +22,8 @@ def index(request):
 
 def signup(request):
 
-    return render(request,"signup.html")
+    if request.method=='GET':
+        return render(request,"signup.html")
+    else:
+        return HttpResponse(request.POST.get("firstname"))
 
