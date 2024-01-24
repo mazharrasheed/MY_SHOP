@@ -10,11 +10,13 @@
     <h3 class="alert alert-light border rounded">Creat an Account</h3>
     <form method='POST'>
     {% csrf_token %}  
+
+    {% if error %}
+    <p style="color:red"> Alert! {{error}}</p>
+    {% endif %}
+
 		<label for="fname" class="form-label">First Name</label>
 		<input name="firstname" required="True" type="text" class="form-control" id="fname" placeholder="Enter your first name">
-		{% if error %}
-    <p style="color:red"> {{error}}</p>
-    {% endif %}
     <label for="lname" class="form-label">Last Name</label>
 		<input name="lastname" required="True" type="text" class="form-control" id="lname" placeholder="Enter your last name">
 		<label for="phoneid" class="form-label">Phone</label>
