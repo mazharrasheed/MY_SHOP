@@ -24,7 +24,7 @@ class Index(View):
       data={'products':products,'categories':categories}
       # print(request.session.get('email'))
       return render(request,"index.html",data)    
-   
+
    def post(self,request):
       productid=request.POST.get('productid')
       cart=request.session.get('cart')
@@ -33,7 +33,7 @@ class Index(View):
          if qty:
             cart[productid]=qty+1
          else:
-            cart[productid]=qty+1
+            cart[productid]=1
       else:
          cart={}
          cart[productid]=1
