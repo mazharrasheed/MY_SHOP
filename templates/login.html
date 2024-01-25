@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block title %} Login {% endblock title %} 
 
 {% block content %}
@@ -9,25 +8,22 @@
 	<div class="mb-3 col-lg-5 mx-auto border rounded p-4">
     <h3 class="alert alert-light border rounded">Login to your Account</h3>
     <form method='POST'>
-    {% csrf_token %} 
-
-    {% if error %} 
+      {% csrf_token %} 
+      {% if error %} 
       <div class="alert alert-danger" role="alert">
         <strong>Alert! {{error}}</strong>
       </div>
-    {% endif %}
-
-		<label for="inputemail" class="form-label">User Email</label>
-		<input name="email" required="True" value ="{{values.email}}" type="email" class="form-control" id="inputemail" placeholder="name@example.com">
-        <label for="inputPassword" class="form-label">Password</label>
-        <input name="password" required="True" type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock"placeholder="********" >
-        <br>
-    
-    <div class="form-group">
-      <input name="login" type="submit" class="btn btn btn-info col-lg-4" id="login" value="Login">
-    </div>
+      {% endif %}
+		  <label for="inputemail" class="form-label">User Email</label>
+		  <input name="email" required="True" value ="{{values.email}}" type="email" class="form-control" id="inputemail" placeholder="name@example.com">
+      <label for="inputPassword" class="form-label">Password</label>
+      <input name="password" required="True" type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock"placeholder="********" >
+      <br>
+      <div class="form-group">
+      <input name="login" type="submit" class="btn btn btn-info col-lg-4 mb-3" id="login" value="Login">
+      <h6>Creat an Acount! <a href="/signup/">SignUP</a></h6>
+      </div>
     </form>
- 
   </div>
   </div>
 </div>
