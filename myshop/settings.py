@@ -133,4 +133,4 @@ MEDIA_URL='/images/uploaded/'
 
 MEDIA_ROOT=BASE_DIR
 
-APPEND_SLASH=False
+# APPEND_SLASH=False
