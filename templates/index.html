@@ -24,10 +24,16 @@
           <img src="{{product.pro_img.url}}" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">Prodcut Name:{{product.product_name}}</h5>
-            <p class="card-text">
-              Description: {{product.pro_des}}
-            </p>
-            <a href="/#" class="btn btn-primary">Add to Cart</a>
+            <p class="card-text">Description: {{product.pro_des}}</p>
+
+            <form action="/" method="POST">
+              {% csrf_token %}
+              
+              <input hidden type="text" name="productid" value="{{product.id}}">
+              <input class="btn btn-primary" type="submit" value="Add to Cart">
+
+            </form>
+
           </div>
         </div>
         {% endfor %}

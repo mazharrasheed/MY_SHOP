@@ -1,5 +1,5 @@
-from django.contrib.auth.hashers import check_password, make_password
-from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.hashers import make_password
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views import View
 
@@ -9,15 +9,12 @@ from ..models.products import Products
 
 # Create your views here.
 
-
 class Signup(View):
 
-    def signup(self,request):
-        
-        if request.method=='GET':
-            return render(request,"signup.html")
-        else:
-            return self.regisgterUser(request)
+    def get(self,request):
+        return render(request,"signup.html")
+    def post(self,request):
+        return self.regisgterUser(request)
 
     def validateCustomer(self,customer,repassword):
         error_message=None
