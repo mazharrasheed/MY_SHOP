@@ -13,6 +13,10 @@ class Index(View):
    def get(self,request):
 
       # request.session.get('cart').clear()
+      cart=request.session.get('cart')
+      if not cart:
+         request.session['cart']={}
+
       products=None
       categories=Category.get_all_category()
       categoryID=(request.GET.get('category'))
@@ -22,16 +26,23 @@ class Index(View):
             products=Products.get_all_produts()
       global data
       data={'products':products,'categories':categories}
-      # print(request.session.get('email'))
+      print(request.session.get('email'))
       return render(request,"index.html",data)    
 
    def post(self,request):
       productid=request.POST.get('productid')
+      remove=request.POST.get('remove')
       cart=request.session.get('cart')
       if cart :
          qty=cart.get(productid)
          if qty:
-            cart[productid]=qty+1
+            if remove:
+               if qty<=1:
+                  cart.pop(productid)
+               else:
+                  cart[productid]=qty-1
+            else:
+               cart[productid]=qty+1
          else:
             cart[productid]=1
       else:
