@@ -35,6 +35,13 @@ class Login(View):
             data={'values':values,'error':error_message}
             return render(request,"login.html",data)
           
+
+def logout(request):
+    request.session.clear()
+    return redirect("login")
+
+
+
 # def login(request):
         
 #         data={}
