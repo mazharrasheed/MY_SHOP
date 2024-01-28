@@ -25,6 +25,8 @@
                 <th> {{forloop.counter}}</th>
                 <th> <img style="width:50px;height:50px" class="rounded-circle" src="{{item.pro_img.url}}" alt=""></th>
                 <th> {{item.product_name}}</th>
+                
+
                 <th> {{item.pro_price|currency}}</th>
                 <th> {{item|product_qty_incart:request.session.cart}}</th>
                 <th> {{item|pro_Total_Price:request.session.cart|currency}}</th>
