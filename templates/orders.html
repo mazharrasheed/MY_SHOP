@@ -7,7 +7,6 @@
     <div class="border rounded p-4 m-4">
     <h1 class="display-4 p-4 ,m-4">Your Orders</h1>
     <hr>
-
     <table class="table">
         <thead>
             <tr >
@@ -16,27 +15,27 @@
                 <th>Product Name</th>
                 <th>Product Price</th>
                 <th>Product Qty</th>
+                <th>Date</th>
                 <th>Total </th>
+                <th>Status </th>
             </tr>
         </thead>
         <tbody>
             {% for item in order %}
             <tr >
                 <th> {{forloop.counter}}</th>
-                <th> {{item.id}}</th>
+                <th> <img style="width:50px;height:50px" class="rounded-circle" src="{{item.product.pro_img.url}}" alt=""></th>
                 <th> {{item.product}}</th>
                 <th>{{item.price|currency}} </th>
                 <th>{{item.qty}}</th>
-                <th>{{item.qty|order_item_total_price:item.price}}</th>
+                <th>{{item.date}}</th>
+                <th>{{item.qty|multiply:item.price|currency}}</th>
+                <th>{{item.status|default:"Pending"}}</th>
             </tr>
             {% endfor %}
         </tbody>
-     
     </table>
-  
-
     </div>
-    
 </div>
 
 {% endblock content %}

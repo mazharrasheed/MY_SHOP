@@ -17,8 +17,6 @@ class Orders(models.Model):
     phone=models.CharField(max_length=16,null=True)
     date=models.DateField(default=datetime.datetime.today)
 
-
-
     def place_order(self):
         self.save()
     @staticmethod
