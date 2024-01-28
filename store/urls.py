@@ -20,15 +20,17 @@ from django.urls import include, path
 
 from myshop import settings
 from store.views.cart import Cart
+from store.views.checout import Cheout
 from store.views.home import Index
 from store.views.login import Login, logout
 from store.views.signup import Signup
 
 urlpatterns = [
-    path('',            Index.as_view(),    name='homepage'),
-    path('signup/',     Signup.as_view(),   name='signup'),
-    path('login/',      Login.as_view(),    name='login'),
-    path('logout/',     logout,             name='logout'),
-    path('showcart/',   Cart.as_view(),     name='showcart'),
+    path('',            Index.as_view(),        name='homepage'),
+    path('signup/',     Signup.as_view(),       name='signup'),
+    path('login/',      Login.as_view(),        name='login'),
+    path('logout/',     logout,                 name='logout'),
+    path('showcart/',   Cart.as_view(),         name='showcart'),
+    path('checkout/',   Cheout.as_view(),       name='checkout'),
      
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
