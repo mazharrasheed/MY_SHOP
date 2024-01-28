@@ -23,6 +23,7 @@ from store.views.cart import Cart
 from store.views.checout import Cheout
 from store.views.home import Index
 from store.views.login import Login, logout
+from store.views.orders import Order
 from store.views.signup import Signup
 
 urlpatterns = [
@@ -32,5 +33,6 @@ urlpatterns = [
     path('logout/',     logout,                 name='logout'),
     path('showcart/',   Cart.as_view(),         name='showcart'),
     path('checkout/',   Cheout.as_view(),       name='checkout'),
+    path('orders/',     Order.as_view(),       name='orders'),
      
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

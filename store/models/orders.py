@@ -21,8 +21,6 @@ class Orders(models.Model):
 
     def place_order(self):
         self.save()
-
-    def __str__(self):
-        return self.name
-
-  
+    @staticmethod
+    def get_order_by_custid(customer):
+        return Orders.objects.filter(customer=customer)

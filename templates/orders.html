@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}Cart{% endblock title %} 
+{% load cart %}
+{% load custom_filters %}
+{% block content %}
+
+<div class="container">
+    <div class="border rounded p-4 m-4">
+    <h1 class="display-4 p-4 ,m-4">Your Orders</h1>
+    <hr>
+
+    <table class="table">
+        <thead>
+            <tr >
+                <th>Sr.No</th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Qty</th>
+                <th>Total </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order %}
+            <tr >
+                <th> {{forloop.counter}}</th>
+                <th> {{item.id}}</th>
+                <th> {{item.product}}</th>
+                <th>{{item.price|currency}} </th>
+                <th>{{item.qty}}</th>
+                <th>{{item.qty|order_item_total_price:item.price}}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+     
+    </table>
+  
+
+    </div>
+    
+</div>
+
+{% endblock content %}
+
