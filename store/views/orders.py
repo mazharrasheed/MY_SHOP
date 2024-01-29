@@ -10,6 +10,6 @@ class Order(View):
 
     def get(self,request):
         customer=request.session.get('customer_id')
-        order=Orders.get_order_by_custid(customer)
-        data={'order':order,}
+        orders=Orders.get_order_by_custid(customer)
+        data={'orders':orders}
         return render(request,'orders.html',data)
