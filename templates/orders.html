@@ -31,9 +31,9 @@
                 <th>{{order.date}}</th>
                 <th>{{order.qty|multiply:order.price|currency}}</th>
                 {% if order.status %}
-                <th><small style="background-color:green"> Completed</small></th>
+                <th><small class='badge bg-success'> Completed</small></th>
                 {% else %}
-                <th> <small style="background-color:red">Pending</small> </th>
+                <th> <small class='badge bg-warning'>Pending</small> </th>
                 {% endif %}
             </tr>
             {% endfor %}
