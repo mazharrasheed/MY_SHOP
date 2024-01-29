@@ -1,5 +1,5 @@
 from django.contrib.auth.hashers import check_password
-from django.http import HttpResponse
+from django.http import HttpResponse ,HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.views import View
 
@@ -10,8 +10,9 @@ from ..models.products import Products
 # Create your views here.
 
 class Login(View):
-
+    return_url=None
     def get(self,request):
+        Login.return_url=request.GET.get('return_url')
         return render(request,"login.html")
     def post(self,request):
         data={}
@@ -24,7 +25,12 @@ class Login(View):
             if flag:
                 request.session['customer_id']=customer.id
                 request.session['email']=customer.email
-                return redirect("/")
+                if Login.return_url:
+                    return HttpResponseRedirect(Login.return_url)
+           
+                else:
+                    Login.return_url:None
+                    return redirect("/")
             else:
                     error_message="Email or Password invalid"
         else:

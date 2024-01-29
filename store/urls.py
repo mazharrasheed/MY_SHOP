@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from myshop import settings
+from store.middlewares.auth import auth_middleware
 from store.views.cart import Cart
 from store.views.checout import Cheout
 from store.views.home import Index
@@ -27,12 +28,12 @@ from store.views.orders import Order
 from store.views.signup import Signup
 
 urlpatterns = [
-    path('',            Index.as_view(),        name='homepage'),
-    path('signup/',     Signup.as_view(),       name='signup'),
-    path('login/',      Login.as_view(),        name='login'),
-    path('logout/',     logout,                 name='logout'),
-    path('showcart/',   Cart.as_view(),         name='showcart'),
-    path('checkout/',   Cheout.as_view(),       name='checkout'),
-    path('orders/',     Order.as_view(),       name='orders'),
+    path('',            Index.as_view(),                        name='homepage'),
+    path('signup/',     Signup.as_view(),                       name='signup'),
+    path('login/',      Login.as_view(),                        name='login'),
+    path('logout/',     logout,                                 name='logout'),
+    path('showcart/',   auth_middleware(Cart.as_view()),        name='showcart'),
+    path('checkout/',   Cheout.as_view(),                       name='checkout'),
+    path('orders/',     auth_middleware(Order.as_view()),       name='orders'),
      
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

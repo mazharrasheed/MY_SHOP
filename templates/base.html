@@ -14,7 +14,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/#">My_Shope</a>
+        <a class="navbar-brand" href="/">My_Shope</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,22 +29,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/#">Store</a>
+              <a class="nav-link active" aria-current="page" href="/">Store</a>
             </li>
           </ul>
           <div class="d-flex">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+            <ul class="navbar-nav  my-2 my-lg-0">
+              
               <li class="nav-item">
                 <a class="nav-link" href="/showcart/">Cart</a>
               </li>
-              {% if request.session.customer_id %}
-
+              <span class="badge bg-info text-dark mb-2 mt-2">{{request.session.cart.keys|length}}</span>
+            
               <li class="nav-item">
                 <a class="nav-link" href="/orders/">Orders</a>
               </li>
+              {% if request.session.customer_id %}
+
+   
               <li class="nav-item">
-                <a class="nav-link" href="logout/">Logout</a>
+                <a class="nav-link" href="/logout/">Logout</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -66,10 +69,7 @@
 
               {% else %}
 
-              <li class="nav-item">
-
-                <a class="nav-link" href="/showcart/">Cart</a>
-              </li>
+              
               <li class="nav-item">
 
                 <a class="nav-link" aria-current="page" href="/signup/">SignUp</a>
